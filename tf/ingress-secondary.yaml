@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-secondary
+  annotations:
+    kubernetes.io/ingress.class: nginx-secondary
+    # not here before TLS
+    cert-manager.io/cluster-issuer: letsencrypt-do-dns-prod
+spec:
+  # not here before TLS
+  tls:
+  - hosts:
+    - third.do.fabianlee-lab.online
+    #- '*.do.fabianlee-lab.online'
+    secretName: third-do-tls
+
+  rules:
+  - host: "third.do.fabianlee-lab.online"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: hello-kubernetes-third
+            port:
+              number: 80

@@ -1,7 +1,0 @@
----
-
-- debug: msg="{{group_names}}"
-
-- name: apply netplan
-  import_tasks: netplan.yml
-  when: "'metalLB' in group_names"

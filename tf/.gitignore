@@ -12,3 +12,6 @@ terraform.tfvars
 kubeconfig_mycluster1
 jumpbox1
 
+# downloaded script
+get_helm.sh
+

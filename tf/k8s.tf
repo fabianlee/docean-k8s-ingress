@@ -1,13 +1,13 @@
 
 data "digitalocean_kubernetes_versions" "example" {
-  version_prefix = "1.21."
+  version_prefix = var.k8s_version_prefix
 }
 
 resource "digitalocean_kubernetes_cluster" "k8s" {
-  name   = "mycluster1"
-  region = "nyc3"
+  name   = var.k8s_cluster_name
+  region = var.do_region
   # Grab the latest version slug from `doctl kubernetes options versions`
-  version = data.digitalocean_kubernetes_versions.example.latest_version # 1.21.3-do.0
+  version = data.digitalocean_kubernetes_versions.example.latest_version
 
   # network
   vpc_uuid = digitalocean_vpc.myvpc.id

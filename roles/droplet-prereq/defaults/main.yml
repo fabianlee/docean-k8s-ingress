@@ -1,0 +1,4 @@
+limit_nofile: 16000
+
+# on digitalOcean droplet, 'root' is ubuntu default user
+users: ['root']

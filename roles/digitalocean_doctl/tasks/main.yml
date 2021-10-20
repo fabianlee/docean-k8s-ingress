@@ -1,0 +1,33 @@
+---
+
+- name: get latest doctl release
+  uri: 
+    url: https://api.github.com/repos/digitalocean/doctl/releases/latest
+    body_format: json
+    return_content: yes
+  register: doctlversion
+
+- debug:
+    msg: "latest version: {{doctlversion.json.tag_name[1:]}}"
+
+- name: download latest doctl
+  get_url:
+    url: "https://github.com/digitalocean/doctl/releases/download/{{doctlversion.json.tag_name}}/doctl-{{doctlversion.json.tag_name[1:]}}-linux-amd64.tar.gz"
+    dest: /tmp
+    mode: 666
+
+- name: extract doctl
+  unarchive:
+    src: /tmp/doctl-{{doctlversion.json.tag_name[1:]}}-linux-amd64.tar.gz
+    remote_src: yes
+    dest: /tmp
+
+- name: move doctl binary to PATH
+  copy:
+    src: /tmp/doctl
+    dest: /usr/local/bin
+    remote_src: yes
+    mode: 775
+
+
+

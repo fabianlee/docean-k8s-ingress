@@ -1,0 +1,24 @@
+# https://github.com/jetstack/cert-manager/issues/1406
+---
+#apiVersion: certmanager.k8s.io/v1alpha1
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: third-do-certificate
+  namespace: default
+spec:
+  secretName: third-do-tls
+  issuerRef:
+    name: letsencrypt-do-dns-prod
+    kind: Issuer # not ClusterIssuer in examples
+  commonName: 'third.do.fabianlee-lab.online'
+  #commonName: '*.do.fabianlee-lab.online'
+  dnsNames:
+  - third.do.fabianlee-lab.online
+  #- '*.do.fabianlee-lab.online'
+#  acme:
+#    config:
+#    - dns01:
+#        provider: prod-dns
+#      domains:
+#      - third.do.fabianlee-lab.online

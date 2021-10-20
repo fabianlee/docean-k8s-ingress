@@ -1,0 +1,14 @@
+---
+
+- hosts: jumpbox
+  gather_facts: yes
+  become: yes
+
+  roles:
+    #- droplet-prereq
+    #- digitalocean_doctl
+    - ansible-ppa
+    #- kubectl-apt
+    #- helm3
+    #- k9s
+

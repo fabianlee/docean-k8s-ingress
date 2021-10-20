@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-kubernetes-third
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: hello-kubernetes-third
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-kubernetes-third
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello-kubernetes-third
+  template:
+    metadata:
+      labels:
+        app: hello-kubernetes-third
+    spec:
+      containers:
+      - name: hello-kubernetes
+        image: paulbouwer/hello-kubernetes:1.8
+        ports:
+        - containerPort: 8080
+        env:
+        - name: MESSAGE
+          value: Hello from the third deployment!

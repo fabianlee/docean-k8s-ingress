@@ -1,14 +1,14 @@
 
 resource "digitalocean_vpc" "myvpc" {
   name     = "myvpc-network"
-  region   = "nyc3"
-  ip_range = "10.10.10.0/24"
+  region   = var.do_region
+  ip_range = var.do_vpc_cidr
 }
 
 resource "digitalocean_droplet" "jumpbox1" {
-  image = "ubuntu-20-04-x64"
+  image = var.do_jumpbox_image
   name = "jumpbox1"
-  region = "nyc3"
+  region = var.do_region
   size = "s-1vcpu-1gb"
   # without definition, will be placed into default VPC
   vpc_uuid = digitalocean_vpc.myvpc.id
@@ -29,8 +29,9 @@ resource "digitalocean_droplet" "jumpbox1" {
   provisioner "remote-exec" {
     inline = [
       "export PATH=$PATH:/usr/bin",
-      "sudo apt update",
-      "sudo apt install -y curl"
+      "sudo apt update"
+      #"sleep 8",
+      #"sudo apt install -y curl"
     ]
   }
 }

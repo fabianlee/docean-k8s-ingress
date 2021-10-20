@@ -1,0 +1,10 @@
+---
+
+- hosts: localhost
+  connection: local
+  gather_facts: yes
+  become: no
+
+  roles:
+    - generate-local-templates
+

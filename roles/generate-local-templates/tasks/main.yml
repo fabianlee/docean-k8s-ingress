@@ -1,0 +1,9 @@
+---
+
+- name: create templates based on group_vars/all
+  template:
+    src: "{{item}}.j2"
+    dest: "{{item}}"
+    #mode: 0775
+  loop:
+    - "{{playbook_dir}}/tf/terraform.tfvars"
