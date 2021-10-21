@@ -1,4 +1,5 @@
 #!/bin/bash
+# https://helm.sh/docs/intro/install/
 
 set -x
 
