@@ -1,31 +1,3 @@
-# k3s with primary and secondary nginx or istio ingress
+# DigitalOcean Kubernetes cluster with LetsEncrypt HTTP and DNS solvers
 
-Modify variables for environment
-  * vi group_vars/all
-
-Create infrastructure
-  * ansible-playbook playbook_terraform.yml
-
-Then apply Ansible roles:
-  * ansible-playbook install_dependencies.yml
-  * ansible-playbook playbook_k3s.yml
-
-Choose between MetalLB+nginx or MetalLB+istio ingress
-  * ansible-playbook playbook_metallb_nginx.yml
-  * ansible-playbook playbook_metallb_istio.yml
-
-Validate kubectl locally:
-  * export KUBECONFIG=/tmp/k3s-kubeconfig
-  * kubectl get services -A
-
-Validate ingress locally:
-  * add entries to local /etc/hosts
-    192.168.2.143 k3s.local
-    192.168.2.144 k3s-secondary.local
-
-  * test nginx ingress
-    ./test-nginx-endpoints.sh
-
-  * test istio ingress
-    ./test-istio-endpoints.sh
 

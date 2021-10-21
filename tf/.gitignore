@@ -7,11 +7,3 @@ id_rsa*
 
 # generated from .j2
 terraform.tfvars
-
-# generated files
-kubeconfig_mycluster1
-jumpbox1
-
-# downloaded script
-get_helm.sh
-
