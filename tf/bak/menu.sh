@@ -28,13 +28,19 @@ function check_prereq() {
   [ -n "${DO_PAT}" ] || { echo "ERROR must first define env var 'DO_PAT' with digital ocean personal token"; exit 3; }
 
   thepath=$(which terraform)
-  [ -n "$thepath" ] || { echo "ERROR terraform 14+ needs to be installed. https://fabianlee.org/2021/05/30/terraform-installing-terraform-manually-on-ubuntu/"; exit 3; }
+  [ -n "$thepath" ] || { echo "ERROR terraform 14+ needs to be installed. Run prereq/install_terraform.sh"; exit 3; }
 
   thepath=$(which ansible)
-  [ -n "$thepath" ] || { echo "ERROR ansible 2.9+ needs to be installed. https://fabianlee.org/2021/05/31/ansible-installing-the-latest-ansible-on-ubuntu/"; exit 3; }
+  [ -n "$thepath" ] || { echo "ERROR ansible 2.9+ needs to be installed. Run prereq/install_ansible_ppa.sh"; exit 3; }
 
   thepath=$(which doctl)
-  [ -n "$thepath" ] || { echo "ERROR doctl needs to be installed"; exit 3; }
+  [ -n "$thepath" ] || { echo "ERROR doctl needs to be installed. Run prereq/install_doctl.sh"; exit 3; }
+
+  thepath=$(which helm)
+  [ -n "$thepath" ] || { echo "ERROR helm needs to be installed. Run prereq/install_helm3_apt.sh"; exit 3; }
+
+  thepath=$(which kubectl)
+  [ -n "$thepath" ] || { echo "ERROR kubectl needs to be installed.  Run prereq/install_kubectl_apt.sh"; exit 3; }
 }
 
 

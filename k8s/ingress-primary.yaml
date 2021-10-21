@@ -1,23 +1,24 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: hello-kubernetes-ingress
+  name: primary-ingress
   annotations:
     kubernetes.io/ingress.class: nginx
     # not here before TLS
     kubernetes.io/tls-acme: "true"
-    cert-manager.io/cluster-issuer: letsencrypt-prod
+    cert-manager.io/cluster-issuer: letsencrypt-http01-prod
+    # allow insecure http
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   # not here before TLS
   tls:
   - hosts:
-    - hw1.fabianlee-lab.online
-    - hw2.fabianlee-lab.online
-    secretName: hello-kubernetes-tls
-
+    - first.fabianlee-lab.online
+    - second.fabianlee-lab.online
+    secretName: primary-letsecnrypt-tls
 
   rules:
-  - host: "hw1.fabianlee-lab.online"
+  - host: "first.fabianlee-lab.online"
     http:
       paths:
       - pathType: Prefix
@@ -27,7 +28,7 @@ spec:
             name: hello-kubernetes-first
             port:
               number: 80
-  - host: "hw2.fabianlee-lab.online"
+  - host: "second.fabianlee-lab.online"
     http:
       paths:
       - pathType: Prefix

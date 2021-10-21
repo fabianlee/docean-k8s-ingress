@@ -1,4 +1,12 @@
 
+# define private vpc network
+resource "digitalocean_vpc" "myvpc" {
+  name     = "myvpc-network"
+  region   = var.do_region
+  ip_range = var.do_vpc_cidr
+}
+
+# lookup exact version of k8s available
 data "digitalocean_kubernetes_versions" "example" {
   version_prefix = var.k8s_version_prefix
 }

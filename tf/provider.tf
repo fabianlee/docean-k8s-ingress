@@ -15,6 +15,7 @@ provider "digitalocean" {
 }
 
 # name of ssh key for cluster/droplets
-data "digitalocean_ssh_key" "terraform" {
-  name = "id_rsa"
-}
+# not necessary if just doing k8s cluster
+#data "digitalocean_ssh_key" "terraform" {
+#  name = "id_rsa"
+#}

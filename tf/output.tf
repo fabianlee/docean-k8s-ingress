@@ -1,6 +1,6 @@
-output "jumpbox1_public" {
-  value = digitalocean_droplet.jumpbox1.ipv4_address
-}
+#output "jumpbox1_public" {
+#  value = digitalocean_droplet.jumpbox1.ipv4_address
+#}
 
 output "k8s_kubeconfig" {
   sensitive = true
