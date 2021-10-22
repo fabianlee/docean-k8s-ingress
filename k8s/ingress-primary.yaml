@@ -15,7 +15,7 @@ spec:
   - hosts:
     - first.fabianlee-lab.online
     - second.fabianlee-lab.online
-    secretName: primary-letsecnrypt-tls
+    secretName: primary-letsencrypt-tls
 
   rules:
   - host: "first.fabianlee-lab.online"
