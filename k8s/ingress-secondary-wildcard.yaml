@@ -4,6 +4,8 @@ metadata:
   name: secondary-ingress
   annotations:
     kubernetes.io/ingress.class: nginx-secondary
+    # is this correct?  or should it be
+    #cert-manager.io/issuer: letsencrypt-dns-wildcard-prod
     cert-manager.io/cluster-issuer: letsencrypt-dns01-prod
 spec:
   tls:
