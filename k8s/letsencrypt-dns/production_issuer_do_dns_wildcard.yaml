@@ -1,7 +1,7 @@
 apiVersion: cert-manager.io/v1
 kind: Issuer # in examples, is not ClusterIssuer
 metadata:
-  name: letsencrypt-do-dns-wildcard-prod
+  name: letsencrypt-dns-wildcard-prod
 spec:
   acme:
     # Email address used for ACME registration
@@ -9,13 +9,13 @@ spec:
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       # Name of a secret used to store the ACME account private key
-      name: letsencrypt-do-dns-wildcard-prod-private-key
+      name: letsencrypt-dns-wildcard-prod-private-key
     # Add a single challenge solver, DNS01 using digital ocean
     solvers:
     - dns01:
         digitalocean:
           tokenSecretRef:
-            name: digitalocean-dns
+            name: digitalocean-dns # DigitalOcean API secret
             key: access-token
       selector:
         dnsNames:

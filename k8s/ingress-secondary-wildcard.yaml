@@ -1,21 +1,18 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-secondary
+  name: secondary-ingress
   annotations:
     kubernetes.io/ingress.class: nginx-secondary
-    # not here before TLS
     cert-manager.io/cluster-issuer: letsencrypt-dns01-prod
 spec:
-  # not here before TLS
   tls:
   - hosts:
-    - foo.do.fabianlee-lab.online
-    #- '*.do.fabianlee-lab.online'
+    - '*.do.fabianlee-lab.online'
     secretName: secondary-letsencrypt-tls
 
   rules:
-  - host: "foo.do.fabianlee-lab.online"
+  - host: "*.do.fabianlee-lab.online"
     http:
       paths:
       - pathType: Prefix
