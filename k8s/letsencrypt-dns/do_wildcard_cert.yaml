@@ -11,14 +11,6 @@ spec:
   issuerRef:
     name: letsencrypt-dns-wildcard-prod
     kind: Issuer # not ClusterIssuer in examples
-  #commonName: 'foo.do.fabianlee-lab.online'
   commonName: '*.do.fabianlee-lab.online'
   dnsNames:
-  #- foo.do.fabianlee-lab.online
   - '*.do.fabianlee-lab.online'
-#  acme:
-#    config:
-#    - dns01:
-#        provider: prod-dns
-#      domains:
-#      - third.do.fabianlee-lab.online
