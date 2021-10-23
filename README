@@ -1,3 +1,7 @@
 # DigitalOcean Kubernetes cluster with LetsEncrypt HTTP and DNS solvers
 
+blog: https://fabianlee.org/2021/10/21/terraform-creating-a-kubernetes-cluster-on-digitalocean-with-public-nginx-ingress/
+
+blog: https://fabianlee.org/2021/10/22/kubernetes-letsencrypt-certificates-using-http-and-dns-solvers-on-digitalocean/
+
 
