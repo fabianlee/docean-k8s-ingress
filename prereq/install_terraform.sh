@@ -4,7 +4,7 @@
 
 set -x
 
-sudo apt-get install jq unzip -y
+sudo apt install jq unzip -y
 
 # explicitly choose version OR pull latest using github api
 export TERRA_VERSION=$(curl -sL https://api.github.com/repos/hashicorp/terraform/releases/latest | jq -r ".tag_name" | cut -c2-)

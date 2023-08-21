@@ -3,7 +3,7 @@
 variable "do_token" {}
 
 # kubernetes major/minor version
-variable k8s_version_prefix { default="1.21." }
+variable k8s_version_prefix { default="1.25." }
 
 # name and region for k8s cluster
 variable k8s_cluster_name { default="mycluster1" }
