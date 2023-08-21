@@ -1,0 +1,19 @@
+# deprecated in 1.19, no longer serviced at v1.25
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hello-kubernetes-second
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: hello-kubernetes-second
+  minReplicas: 1
+  maxReplicas: 2
+  metrics:
+  # only valid for autoscaling/v2beta1
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: 30 # deprecated at v2beta2
